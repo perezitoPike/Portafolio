@@ -5,24 +5,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wilder Chura | Game Developer Portfolio</title>
+    <link rel="stylesheet" href="CSS/styles.css">
 </head>
 
 <body>
-    <header>
-        <img src="img/bannerTest.png" alt="">
+    <header id="main-header" class="main-header-container">
+        <div class="brand-section">
+            <div class="logo-area">
+                <div class="hud-icon">WC</div>
+                <div class="identity-text">
+                    <h1>WILDER CHURA</h1>
+                    <h2>GAME DEVELOPER | SYSTEM ENGINEER</h2>
+                </div>
+            </div>
+        </div>
+        <nav class="hud-nav-bar" id="sticky-nav">
+            <ul>
+                <li><a href="#about" class="hud-link" data-text="About">About me</a></li>
+                <li><a href="#skills" class="hud-link" data-text="Skills">Skills</a></li>
+                <li><a href="#projects" class="hud-link" data-text="Projects">Projects</a></li>
+                <li><a href="#contac" class="hud-link" data-text="Contac">Contac</a></li>
+            </ul>
+        </nav>
+        <div class="nav-glow-line"></div>
     </header>
-    <nav>
-        <ul>
-            <li>skill1</li>
-            <li>skill2</li>
-            <li>skill3</li>
-            <li>skill4</li>
-            <li>skill5</li>
-            <li>skill6</li>
-        </ul>
-    </nav>
     <main>
-        <section>
+        <section id="about" class="hud-section">
+            <header class="section-header">
+                <span class="decoration" aria-hidden="true">//</span>
+                <h2>USER_PROFILE</h2>
+                <div class="header-line"></div>
+            </header>
+
+            <div class="about-container">
+                <figure class="profile-frame">
+                    <div class="scanner-line"></div>
+                    <img src="img/Wilder_Perfil.png" alt="Photografy of Wilder Chura">
+                    <figcaption>BIO_SCAN: ACTIVE</figcaption>
+                </figure>
+
+                <aside class="info-block">
+                    <section class="id-badge">
+                        <span class="label">SUBJECT_ID</span>
+                        <h3 class="name">WILDER CHURA CONDORI</h3>
+                        <p class="role">GAME DEVELOPER | SYSTEM ENGINEER</p>
+                    </section>
+
+                    <nav class="social-links">
+                        <span class="label" aria-label="Social Media Links">CONNECT</span>
+                        <ul>
+                            <li><a href="#" title="LinkedIn Profile"><img src="img/logos/social media/linkedin_Logo.png"
+                                        alt="LinkedIn"></a></li>
+                            <li><a href="#" title="WhatsApp Contact"><img src="img/logos/social media/whatsapp.png"
+                                        alt="WhatsApp"></a></li>
+                            <li><a href="#" title="GitHub Repository"><img src="img/logos/social media/whatsapp.png"
+                                        alt="GitHub"></a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <article class="description-block">
+                    <header class="terminal-header">
+                        <div class="terminal-controls"><span class="dot"></span><span class="dot"></span><span
+                                class="dot"></span></div>
+                    </header>
+                    <div class="description-content">
+                        <p>I trained in the Higher Technician of Video Game Development career, being passionate about
+                            creating
+                            immersive and unique experiences. I have experience with multidisciplinary development
+                            teams, which
+                            allows me to learn and improve every day to be able to provide solutions and adapt to a
+                            collaborative
+                            work pace, supporting the fulfillment of the desired objectives.</p>
+                        <p>My strengths are in the technical part with skills in Unity, in the programming of 2D, 3D
+                            environments
+                            and other technologies such as VR and AR. In which various functions are applied to games
+                            such as:
+                            mission system, multiplayer, simulations, reward system, authentications, among others.
+                            Successfully
+                            implementing third-party tools such as PlayFab, Photon, Firebase, Oculus SDK and more,
+                            seeking to
+                            provide optimal solutions through testing and application optimization.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <!-- <section id="about" class="hud-section">
+            <div class="section-header">
+                <span class="decoration">//</span>
+                <h2>USER PROFILE</h2>
+                <div class="header-line"></div>
+            </div>
             <h2>About me</h2>
             <img src="img/Wilder_Perfil.png" alt="">
             <h3>Game Developer | System Engineer</h3>
@@ -40,7 +113,7 @@
                 mission system, multiplayer, simulations, reward system, authentications, among others. Successfully
                 implementing third-party tools such as PlayFab, Photon, Firebase, Oculus SDK and more, seeking to
                 provide optimal solutions through testing and application optimization.</p>
-        </section>
+        </section> -->
         <section>
             <h2>Skills</h2>
             <ul>
@@ -110,6 +183,7 @@
             <li><img src="img/logos/social media/whatsapp.png" alt=""></li>
         </ul>
     </footer>
+    <script src="JS/logic.js"></script>
 </body>
 
 </html>
