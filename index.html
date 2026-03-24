@@ -30,6 +30,7 @@
         <div class="nav-glow-line"></div>
     </header>
     <main>
+        <!-- SECCION ACERCA DE MI -->
         <section id="about" class="hud-section">
             <header class="section-header">
                 <span class="decoration" aria-hidden="true">//</span>
@@ -91,6 +92,7 @@
             </div>
         </section>
 
+        <!-- SECCION HABILIDADES -->
         <section id="skills" class="hud-section">
             <header class="section-header">
                 <span class="decoration" aria-hidden="true">//</span>
@@ -168,6 +170,7 @@
             </div>
         </section>
 
+        <!-- SECCION EXPERIENCIA -->
         <section id="experience" class="hud-section">
             <header class="section-header">
                 <span class="decoration" aria-hidden="true">//</span>
@@ -252,6 +255,7 @@
             </div>
         </section>
 
+        <!-- SECCION EDUCACION -->
         <section id="education" class="hud-section">
             <header class="section-header">
                 <span class="decoration" aria-hidden="true">//</span>
@@ -294,27 +298,43 @@
             </div>
         </section>
 
-        <!-- <section>
-            <h2>Education</h2>
-            <h3>Tecnico Superior en Desarrollo de Videojuego</h3>
-            <h4>UNIVALLE 2018 - 2021</h4>
-            <p>Realice mis estudios en....</p>
-        </section> -->
+        <!-- SECCION DE PROYECTOS -->
+        <section id="projects" class="projects-section">
+            <h2 class="section-title">PROJECTS</h2>
 
-        <section>
-            <h2>Proyects</h2>
-            <img src="img/Projects/aprendiendoaduana-1.jpg" alt="">
-            <h3>Lectuticona</h3>
-            <p>Proyecto que realice...</p>
-            <img src="img/bannerTest.png" alt="">
-            <p>Descripcion proyecto</p>
-            <ul>
-                <li><img src="img/logos/frameworks/csharp-icon.webp" alt=""></li>
-                <li><img src="img/logos/frameworks/csharp-icon.webp" alt=""></li>
-                <li><img src="img/logos/frameworks/csharp-icon.webp" alt=""></li>
-            </ul>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">TODOS</button>
+                <button class="filter-btn" data-filter="unity">UNITY</button>
+                <button class="filter-btn" data-filter="csharp">C#</button>
+                <button class="filter-btn" data-filter="web">WEB</button>
+            </div>
+
+            <div class="projects-container">
+                <div class="projects-list-wrapper">
+                    <ul id="project-menu" class="project-menu"></ul>
+                </div>
+
+                <div class="project-viewer">
+                    <button class="nav-btn-float prev">◀</button>
+                    <button class="nav-btn-float next">▶</button>
+
+                    <div id="project-display" class="viewer-content">
+                        <div class="viewer-bg">
+                            <img id="view-img" src="" alt="">
+                        </div>
+
+                        <div class="viewer-info-overlay">
+                            <div class="info-text">
+                                <h3 id="view-title"></h3>
+                                <p id="view-desc"></p>
+                                <div id="view-tools" class="tool-icons"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <section>
+        <!-- <section>
             <h2>Contac me</h2>
             <form action="">
                 <label for="name">Nombre: </label>
@@ -325,9 +345,46 @@
                 <textarea name="message" id=""></textarea>
                 <button>Enviar</button>
             </form>
+        </section> -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">CONTACT_ME</h2>
+
+            <div class="contact-container">
+                <form id="contact-form" class="hud-form">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="name">NOMBRE_USER</label>
+                            <input type="text" id="name" name="name" placeholder="Escribe tu nombre..." required>
+                            <div class="input-line"></div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="email">EMAIL_ENVOY</label>
+                            <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="message">MESSAGE_LOG</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Iniciando transmisión..."
+                            required></textarea>
+                        <div class="input-line"></div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="btn-email" class="btn-hud">
+                            <span>ENVIAR_CORREO</span>
+                        </button>
+                        <button type="button" id="btn-whatsapp" class="btn-hud alt">
+                            <span>WHATSAPP_LINK</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </section>
     </main>
-    <footer>
+    <!-- <footer>
         <a href="https://www.flaticon.es/iconos-gratis/whatsapp" title="whatsapp iconos">Whatsapp iconos creados por
             Fathema Khanom - Flaticon</a>
         <p>2026</p>
@@ -335,6 +392,35 @@
             <li><img src="img/logos/social media/linkedin_Logo.png" alt=""></li>
             <li><img src="img/logos/social media/whatsapp.png" alt=""></li>
         </ul>
+    </footer> -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-credits">
+                <a href="https://www.flaticon.es/iconos-gratis/whatsapp" title="whatsapp iconos">
+                    Iconos por Fathema Khanom - Flaticon
+                </a>
+            </div>
+
+            <div class="footer-copy">
+                <p>&copy; 2026 // WILDER_SYSTEM_OS</p>
+            </div>
+
+            <div class="footer-social">
+                <ul class="social-links">
+                    <li>
+                        <a href="https://linkedin.com/in/tu-perfil" target="_blank">
+                            <img src="img/logos/social media/linkedin_Logo.png" alt="LinkedIn">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/591XXXXXX" target="_blank">
+                            <img src="img/logos/social media/whatsapp.png" alt="WhatsApp">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-line"></div>
     </footer>
     <!-- POP UP -->
     <div id="cert-modal" class="hud-modal">
