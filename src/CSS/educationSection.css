@@ -1,0 +1,104 @@
+/* SECCIÓN EDUCATION (MODULE GRID) */
+.education-grid {
+    display: grid;
+    /* Crea columnas que se adaptan al espacio, mínimo 200px de ancho */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Diseño de cada bloque de educación */
+.edu-card {
+    background: var(--bg-panel-transparent);
+    border: 1px solid var(--border-panel);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.02);
+}
+
+/* Efecto hover general (iluminación de tarjeta) */
+.edu-card:hover {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.1), inset 0 0 15px rgba(0, 240, 255, 0.05);
+    transform: translateY(-5px);
+}
+
+/* Marco del icono */
+.edu-icon-frame {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    /* Lo hacemos circular como en tu diseño */
+    background: rgba(0, 240, 255, 0.05);
+    border: 1px dashed var(--neon-cyan);
+    transition: all 0.3s ease;
+}
+
+.edu-icon {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(1.5);
+    /* Blanco/gris brillante */
+}
+
+/* Tipografía de la tarjeta */
+.edu-card h3 {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+    flex-grow: 1;
+    /* Empuja el estado hacia abajo para que todos queden alineados */
+}
+
+.edu-status {
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: rgba(224, 247, 250, 0.6);
+    /* Un cyan más apagado */
+    letter-spacing: 1px;
+}
+
+/* Variaciones de estado */
+.edu-status.highlight {
+    color: var(--accent-warn);
+    /* Naranja para resaltar que está en curso */
+    font-weight: bold;
+}
+
+/* --- TARJETA INTERACTIVA (CERTIFICADOS) --- */
+.interactive-card {
+    cursor: pointer;
+    background: rgba(0, 240, 255, 0.05);
+    border-style: dashed;
+    /* Borde punteado para indicar que es un botón */
+}
+
+.interactive-card .action-text {
+    color: var(--neon-cyan);
+    font-weight: bold;
+    animation: pulseText 2s infinite;
+}
+
+/* Animación sutil para invitar al clic */
+@keyframes pulseText {
+
+    0%,
+    100% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 8px var(--neon-cyan);
+    }
+}

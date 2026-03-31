@@ -1,0 +1,132 @@
+/* SECCION PROYECTOS */
+.projects-section {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.viewer-info-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+    padding: 40px 20px 20px;
+    color: white;
+}
+
+.nav-btn-float {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(0, 240, 255, 0.2);
+    border: 1px solid var(--neon-cyan);
+    color: white;
+    padding: 20px 10px;
+    cursor: pointer;
+    opacity: 0.3; 
+    transition: all 0.3s ease;
+}
+
+.nav-btn-float:hover {
+    opacity: 1;
+    background: rgba(0, 240, 255, 0.5);
+    padding: 25px 15px;
+}
+
+.nav-btn-float.prev { left: 0; border-radius: 0 5px 5px 0; }
+.nav-btn-float.next { right: 0; border-radius: 5px 0 0 5px; }
+
+.projects-container {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 20px;
+    height: 500px;
+    margin-top: 20px;
+}
+
+/* Filtros */
+.project-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    padding: 5px 15px;
+    cursor: pointer;
+    font-family: monospace;
+    transition: all 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--neon-cyan);
+    color: #000;
+}
+
+/* Panel Izquierdo (Scrollable) */
+.projects-list-wrapper {
+    overflow-y: auto;
+    border-right: 1px solid rgba(0, 240, 255, 0.3);
+    padding-right: 10px;
+}
+
+.projects-list-wrapper::-webkit-scrollbar { width: 5px; }
+.projects-list-wrapper::-webkit-scrollbar-thumb { background: var(--neon-cyan); }
+
+.project-nav-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 0, 0, 0.7);
+    margin-bottom: 8px;
+    padding: 10px;
+    cursor: pointer;
+    border-left: 4px solid transparent;
+    transition: 0.3s;
+}
+
+.project-nav-item.active {
+    border: 1px solid #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    background: rgba(255, 0, 0, 1);
+    border-left: 4px solid #fff;
+    transform: translateX(5px);
+}
+
+.nav-icon img { width: 40px; margin-right: 15px; }
+
+/* Panel Derecho (Visor) */
+.project-viewer {
+    position: relative;
+    border: 2px solid var(--neon-cyan);
+    overflow: hidden;
+    background: #000;
+}
+
+.viewer-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+.viewer-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tool-icons img {
+    width: 30px;
+    margin-right: 10px;
+    filter: drop-shadow(0 0 5px var(--neon-cyan));
+}

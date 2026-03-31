@@ -1,0 +1,169 @@
+ /* MODAL (POP-UP) STYLES */
+.hud-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Clase para activar el modal desde JS */
+.hud-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 10, 14, 0.9); /* Fondo muy oscuro para resaltar el panel */
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background: #4a4a4a; /* El tono gris de tu imagen */
+    border: 2px solid var(--neon-cyan);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+    width: 90%;
+    max-width: 800px;
+    padding: 40px;
+    z-index: 2001;
+    transform: translateY(-20px) scale(0.95);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animación de entrada de la caja */
+.hud-modal.active .modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-family: monospace;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: var(--accent-warn);
+}
+
+.modal-header h2 {
+    text-align: center;
+    color: var(--text-main); /* En tu imagen es blanco/claro */
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+/* Grilla interna de la galería */
+.cert-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.cert-item {
+    background: #5a5a5a; /* Un gris un poco más claro para las tarjetas */
+    width: 160px;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.cert-item:hover {
+    border-color: var(--neon-cyan);
+    background: rgba(0, 240, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.cert-item img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    filter: brightness(0) invert(1); /* Vuelve el icono totalmente blanco */
+}
+
+.cert-item p {
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.cert-item span {
+    font-family: monospace;
+    color: var(--text-main);
+    font-size: 0.8rem;
+    display: block;
+    margin-top: 5px;
+}
+
+.cert-zoom-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: none; /* Oculto por defecto */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2005;
+    animation: fadeIn 0.3s ease;
+}
+
+.cert-zoom-container.active {
+    display: flex;
+}
+
+#zoomed-image {
+    max-width: 85%;
+    max-height: 75%;
+    border: 2px solid var(--neon-cyan);
+    box-shadow: 0 0 20px var(--color-shadow);
+}
+
+.close-zoom {
+    position: absolute;
+    top: 20px;
+    color: var(--neon-cyan);
+    cursor: pointer;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.zoom-info {
+    margin-top: 20px;
+    font-family: monospace;
+    color: var(--text-main);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

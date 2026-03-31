@@ -1,0 +1,126 @@
+/* SKILL SECTION CAROUSEL*/
+.carousel-wrapper{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.hud-arrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+
+    background: rgba(5, 10, 14, 0.8);
+    border: 1px solid var(--neon-cyan);
+    font-size: 1.5rem;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-main);
+
+    clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+}
+
+.hud-arrow:hover{
+    background: var(--neon-cyan);
+    color: var(--bg-void);
+    box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.hud-arrow:active{
+    transform: translateY(-50%) scale(0.9);
+}
+
+.arrow-left{
+    left: 0;
+}
+
+.arrow-right{
+    right: 0;
+}
+
+.inventory-carousel{
+    width: 100%;
+    overflow: hidden;
+    padding: 40px 0;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent );
+}
+
+.carousel-track{
+    display: flex;
+    width: max-content;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    will-change: transform;
+}
+
+.skill-slot{
+    flex: 0 0 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slot-frame{
+    width: 100px;
+    height: 100px;
+    background: rgba(19, 32, 38, 0.6);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.slot-frame::before{
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid var(--neon-cyan);
+    border-left: 2px solid var(--neon-cyan);
+}
+
+.skill-icon {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(0.8);
+    transition: all 0.4s ease;
+}
+
+.slot-label{
+    margin-top: 15px;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--neon-cyan);
+    opacity: 0.7;
+    letter-spacing: 1px;
+}
+
+/* ZOOM EFECT */
+.skill-slot:hover .slot-frame,
+.skill-slot:active .slot-frame{
+    background: rgba(0, 240, 255, 0.1);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.skill-slot:hover .skill-icon{
+    filter: grayscale(0%) brightness(1.1);
+    transform: scale(1.2);
+}
+
+.skill-slot:hover .slot-label{
+    opacity: 1;
+    text-shadow: 0 0 8px var(--neon-cyan);
+}

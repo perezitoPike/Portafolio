@@ -1,0 +1,115 @@
+/* HEADER SECTION */
+.main-header-container {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--bg-panel-semitrnasparent);
+    backdrop-filter: blur(5px);
+    box-sizing: border-box;
+    padding: 0 40px;
+}
+
+.brand-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hud-icon {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1rem;
+    box-shadow: 0 0 10px var(--color-shadow);
+}
+
+.identity-text h1 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--text-main);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.identity-text h2 {
+    margin: 0;
+    font-size: 0.65rem;
+    color: var(--neon-cyan);
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+.hud-nav-bar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.hud-nav-bar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.hud-link {
+    text-decoration: none;
+    color: var(--text-main);
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.hud-link:hover {
+    color: var(--bg-void);
+    background-color: var(--neon-cyan);
+    box-shadow: 0 0 15px var(--neon-cyan);
+    border-color: var(--neon-cyan);
+}
+
+.hud-link:hover::before {
+    content: '[';
+    margin-right: 5px;
+}
+
+.hud-link:hover::after {
+    content: ']';
+    margin-left: 5px;
+}
+
+.nav-glow-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+    box-shadow: 0 1px 10px var(--neon-cyan);
+    opacity: 0.8;
+}

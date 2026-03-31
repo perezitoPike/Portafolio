@@ -1,0 +1,36 @@
+:root {
+    --bg-void: #050a0e;
+    /*Background*/
+    --neon-cyan: #00f0ff;
+    /*principal color*/
+    --bg-panel: #132026;
+    /*popup*/
+    --text-main: #e0f7fa;
+    /*Text*/
+    --accent-warn: #ff8800;
+    /*secondary color*/
+
+    --bg-panel-transparent: rgba(19, 32, 38, 0.85);
+    --bg-panel-semitrnasparent: rgba(5, 10, 14, 0.95);
+    --border-panel: rgba(0, 240, 255, 0.3);
+    --color-shadow: rgba(0, 240, 255, 0.2);
+    --neon-glow: 0 0 10px var(--neon-cyan);
+
+    --header-height: 80px;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: var(--bg-void);
+    color: var(--text-main);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.header-line {
+    flex-grow: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--neon-cyan), transparent);
+    opacity: 0.5;
+    margin-bottom: 15px;
+}
