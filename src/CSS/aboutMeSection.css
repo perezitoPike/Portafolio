@@ -1,11 +1,4 @@
 /*ABOUT ME SECTION*/
-.hud-section {
-    padding: 80px 40px;
-    max-width: 1400px;
-    margin: 0 auto;
-    overflow: hidden;
-}
-
 .section-header {
     display: flex;
     align-items: center;
@@ -22,14 +15,18 @@
 
 .about-container {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 30px;
-    align-items: stretch;
+    flex-direction: row;
+    /* Asegura que sea fila */
+    gap: 20px;
+    align-items: flex-start;
+    /* Importante para que no se estiren */
+    justify-content: space-between;
 }
 
 .profile-frame {
     margin: 0;
-    flex: 0 0 280px;
+    width: 350px;
+    /* Tamaño fijo para la foto */
     position: relative;
     border: 1px solid var(--border-panel);
     background: var(--bg-panel-transparent);
@@ -69,10 +66,13 @@
 }
 
 .info-block {
-    flex: 0 0 320px;
+    flex: 0 0 350px;
+    /* Tamaño para el centro */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    /* Centra el contenido verticalmente respecto a la foto */
+    text-align: left;
     padding: 10px 0;
 }
 
@@ -99,33 +99,48 @@
     font-weight: bold;
 }
 
+.social-links {
+    margin-top: 25px; /* Un poco más de aire respecto al rol */
+}
+
 .social-links ul {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 15px 0 0 0;
     display: flex;
-    gap: 20px;
+    gap: 30px;
+    justify-content: flex-start;
 }
 
-.social-links img {
-    width: 32px;
-    height: 32px;
+.social-links ul li a img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     filter: drop-shadow(0 0 5px var(--color-shadow));
+    opacity: 0.9;
+    display: block;
 }
 
-.social-links img:hover {
-    transform: scale(1.2) translateY(-5px);
-    filter: drop-shadow(0 0 10px var(--neon-cyan)) brightness(1.2);
+.social-links ul li a img:hover {
+    transform: scale(1.25) translateY(-8px);
+    /* Salta un poco más al pasar el mouse */
+    filter: drop-shadow(0 0 15px var(--neon-cyan)) brightness(1.3);
+    opacity: 1;
+}
+
+.social-links .label {
+    margin-bottom: 12px;
 }
 
 .description-block {
     flex: 1;
+    /* Ocupa el resto del espacio */
     border: 1px solid var(--border-panel);
     background-color: var(--bg-panel-transparent);
-    position: relative;
     display: flex;
     flex-direction: column;
+    min-width: 300px;
 }
 
 .terminal-header {
@@ -170,6 +185,35 @@
     margin-bottom: 15px;
 }
 
+/* EL TRUCO DE LAS LÍNEAS */
+.text-wrapper {
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    /* En PC: 10 líneas suelen nivelar bien una foto de 250px + caption */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Cuando se expande (Activado por JS) */
+.text-wrapper.is-expanded {
+    -webkit-line-clamp: unset;
+    display: block;
+}
+
+/* Estilo del botón dentro del bloque */
+.terminal-btn {
+    background: transparent;
+    border: none;
+    color: var(--neon-cyan);
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 25px;
+    text-align: left;
+}
+
 @keyframes scanAnimation {
     0% {
         top: 0%;
@@ -187,5 +231,58 @@
     100% {
         top: 100%;
         opacity: 0;
+    }
+}
+
+@media (max-width: 1100px) {
+    .about-container {
+        flex-direction: column;
+        /* Cambio a columna */
+        align-items: center;
+        /* Centra todo el contenido */
+    }
+
+    .profile-frame {
+        flex: none;
+        width: 250px;
+        margin-bottom: 10px;
+    }
+
+    .info-block {
+        flex: none;
+        width: 100%;
+        text-align: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+.social-links ul {
+        justify-content: center;
+        gap: 40px; /* Más espacio para evitar toques accidentales en pantallas táctiles */
+    }
+    
+    .social-links img {
+        width: 52px; /* Un pelín más grandes en móvil para facilitar el clic */
+        height: 52px;
+    }
+
+    .description-block {
+        width: 100%;
+        /* El panel de texto ocupa todo el ancho abajo */
+    }
+
+    .text-wrapper {
+        -webkit-line-clamp: 5;
+    }
+}
+
+@media (max-width: 600px) {
+    .hud-section {
+        padding: 40px 20px;
+        /* Menos espacio en pantallas muy pequeñas */
+    }
+
+    .name {
+        font-size: 1.5rem;
     }
 }

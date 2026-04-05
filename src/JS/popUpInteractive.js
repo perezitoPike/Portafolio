@@ -180,29 +180,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Aquí puedes llamar a tu startAutoPlay() si deseas que inicie solo
 });
 
-/* LOGICA CONTACTO */
-document.addEventListener('DOMContentLoaded', () => {
-    const contactForm = document.getElementById('contact-form');
-    
-    // Configuración de WhatsApp
-    const btnWhatsapp = document.getElementById('btn-whatsapp');
-    btnWhatsapp.onclick = () => {
-        const name = document.getElementById('name').value;
-        const msg = document.getElementById('message').value;
-        const phone = "591XXXXXX"; // ¡Wilder, pon aquí tu número con código de país!
-        
-        const url = `https://wa.me/${phone}?text=Hola Wilder, soy ${name}. ${msg}`;
-        window.open(url, '_blank');
-    };
-
-    // Configuración de Correo (Vía mailto para empezar)
-    contactForm.onsubmit = (e) => {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const msg = document.getElementById('message').value;
-        
-        const mailtoLink = `mailto:tu-correo@gmail.com?subject=Contacto Portafolio: ${name}&body=De: ${email}%0D%0A%0D%0A${msg}`;
-        window.location.href = mailtoLink;
-    };
-});

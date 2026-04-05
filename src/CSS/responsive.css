@@ -1,0 +1,38 @@
+/* Responsivo para móviles */
+/* @media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 1100px) {
+    .about-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-block {
+        flex: none;
+        width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+
+    .social-links ul {
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .description-block {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px){
+    .hud-arrow{
+        padding: 5px 10px;
+        font-size: 1rem;
+    }
+} */

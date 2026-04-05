@@ -1,3 +1,11 @@
+const objectsSkill = [
+    {
+        title:"Unity",
+        alt:"Unity",
+        src_image:"src/img/logos/frameworks/unity-icon.webp"
+    }
+]
+
 /* Skill scrolling */
 document.addEventListener('DOMContentLoaded', () => {
     const track = document.getElementById('track');
@@ -15,6 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
         easing: 'linear'
     }
     );
+
+    // FUNCIÓN CLAVE: Detectar si es móvil para pausar
+    const checkMobile = () => {
+        if (window.innerWidth <= 850) {
+            scrollAnimation.pause();
+        } else {
+            scrollAnimation.play();
+        }
+    };
+
+    // Ejecutar al cargar y al cambiar tamaño de ventana
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
 
     setInterval(() => {
         if (scrollAnimation.playbackRate < 0 && scrollAnimation.currentTime <= 0) {
@@ -87,3 +108,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Referencias al DOM
+    const track = document.getElementById('track');
+    const btnShowMore = document.getElementById('btn-show-more');
+    const btnShowLess = document.getElementById('btn-show-less');
+
+    // Lógica del Inventario Desplegable (Solo afecta en móvil por el CSS)
+    if (btnShowMore && btnShowLess) {
+        // Al hacer clic en "+"
+        btnShowMore.addEventListener('click', () => {
+            track.classList.add('is-expanded');
+        });
+
+        // Al hacer clic en "-"
+        btnShowLess.addEventListener('click', () => {
+            track.classList.remove('is-expanded');
+            
+            // Opcional: Hace que la pantalla suba de vuelta al inicio de la sección Skills
+            document.getElementById('skills').scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+});

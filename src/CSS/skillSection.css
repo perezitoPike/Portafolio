@@ -1,12 +1,12 @@
 /* SKILL SECTION CAROUSEL*/
-.carousel-wrapper{
+.carousel-wrapper {
     position: relative;
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-.hud-arrow{
+.hud-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -23,33 +23,33 @@
     clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
 }
 
-.hud-arrow:hover{
+.hud-arrow:hover {
     background: var(--neon-cyan);
     color: var(--bg-void);
     box-shadow: 0 0 15px var(--neon-cyan);
 }
 
-.hud-arrow:active{
+.hud-arrow:active {
     transform: translateY(-50%) scale(0.9);
 }
 
-.arrow-left{
+.arrow-left {
     left: 0;
 }
 
-.arrow-right{
+.arrow-right {
     right: 0;
 }
 
-.inventory-carousel{
+.inventory-carousel {
     width: 100%;
     overflow: hidden;
     padding: 40px 0;
     position: relative;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent );
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
-.carousel-track{
+.carousel-track {
     display: flex;
     width: max-content;
 
@@ -59,18 +59,31 @@
     will-change: transform;
 }
 
-.skill-slot{
+.skill-slot {
+    --slot-color: var(--neon-cyan);
+    /* Cian por defecto */
+    --slot-glow: rgba(0, 240, 255, 0.2);
+    /* Brillo cian por defecto */
+
     flex: 0 0 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.slot-frame{
+.slot-orange {
+    --slot-color: var(--accent-warn);
+    --slot-glow: rgba(255, 136, 0, 0.2);
+    /* Brillo naranja */
+}
+
+.slot-frame {
     width: 100px;
     height: 100px;
-    background: rgba(19, 32, 38, 0.6);
-    border: 1px solid rgba(0, 240, 255, 0.3);
+    /* background: rgba(19, 32, 38, 0.6);
+    border: 1px solid rgba(0, 240, 255, 0.3); */
+    background: color-mix(in srgb, var(--slot-color), transparent 90%);
+    border: 1px solid color-mix(in srgb, var(--slot-color), transparent 90%);;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,15 +91,15 @@
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.slot-frame::before{
+.slot-frame::before {
     content: '';
     position: absolute;
     top: -2px;
     left: -2px;
     width: 10px;
     height: 10px;
-    border-top: 2px solid var(--neon-cyan);
-    border-left: 2px solid var(--neon-cyan);
+    border-top: 2px solid var(--slot-color);
+    border-left: 2px solid var(--slot-color);
 }
 
 .skill-icon {
@@ -97,30 +110,131 @@
     transition: all 0.4s ease;
 }
 
-.slot-label{
+.slot-label {
     margin-top: 15px;
     font-family: monospace;
     font-size: 0.75rem;
-    color: var(--neon-cyan);
+    color: var(--slot-color);
     opacity: 0.7;
     letter-spacing: 1px;
 }
 
-/* ZOOM EFECT */
 .skill-slot:hover .slot-frame,
-.skill-slot:active .slot-frame{
-    background: rgba(0, 240, 255, 0.1);
-    border-color: var(--neon-cyan);
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+.skill-slot:active .slot-frame {
+    background: color-mix(in srgb, var(--slot-color), transparent 90%);
+    border-color: var(--slot-color);
+    box-shadow: 0 0 20px var(--slot-glow);
     transform: scale(1.1);
 }
 
-.skill-slot:hover .skill-icon{
+.skill-slot:hover .skill-icon {
     filter: grayscale(0%) brightness(1.1);
     transform: scale(1.2);
 }
 
-.skill-slot:hover .slot-label{
+.skill-slot:hover .slot-label {
     opacity: 1;
-    text-shadow: 0 0 8px var(--neon-cyan);
+    color: var(--slot-color);
+    text-shadow: 0 0 8px var(--slot-color);
+}
+
+.text-terminal {
+    font-size: 2.5rem;
+    color: var(--accent-warn);
+}
+
+/* Aseguramos que los skills "ocultos" de móvil sí se vean en el carrusel de PC */
+.mobile-hidden {
+    display: flex;
+}
+
+/* Ocultamos los botones de expandir/contraer en la vista de PC */
+.mobile-toggle-btn {
+    display: none;
+}
+
+
+@media (max-width: 850px) {
+
+    /* 1. Desactivamos el carrusel */
+    .hud-arrow {
+        display: none !important;
+    }
+
+    .inventory-carousel {
+        mask-image: none;
+        overflow: visible;
+        padding: 20px 0;
+    }
+
+    /* 2. Convertimos el track en un Grid */
+    .carousel-track {
+        display: grid;
+        /* Crea columnas que se adaptan, mínimo de 110px de ancho */
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 15px;
+        width: 100% !important;
+        justify-items: center;
+        list-style: none;
+        transform: none !important;
+        /* Cancela cualquier animación de JS del carrusel */
+    }
+
+    .skill-slot {
+        flex: none !important;
+        width: 100% !important;
+    }
+
+    .slot-frame {
+        width: 80px;
+        /* Un poco más pequeños para que entren 3 en fila */
+        height: 80px;
+    }
+
+    /* 3. Lógica de Ocultar/Mostrar */
+    .mobile-hidden {
+        display: none;
+        /* Oculta los skills secundarios */
+    }
+
+    .mobile-toggle-btn {
+        display: flex;
+        /* Muestra el botón "+" */
+        cursor: pointer;
+    }
+
+    .carousel-track .skill-slot:nth-child(n+6) {
+        display: none;
+    }
+
+    #btn-show-more {
+        display: flex !important;
+        order: 6;
+        /* Lo posiciona al final de las dos primeras filas */
+    }
+
+    /* 5. ESTADO EXPANDIDO */
+    .carousel-track.is-expanded .skill-slot {
+        display: flex !important;
+        /* Muestra todo */
+    }
+
+    .carousel-track.is-expanded #btn-show-more {
+        display: none !important;
+        /* Oculta el "+" */
+    }
+
+    .carousel-track.is-expanded #btn-show-less {
+        display: flex !important;
+        /* Muestra el "-" */
+    }
+
+    /* 4. ESTADO EXPANDIDO (Activado por JS) */
+    .carousel-track.is-expanded .mobile-hidden {
+        display: flex;
+    }
+
+    .carousel-track.is-expanded #btn-show-more {
+        display: none;
+    }
 }

@@ -28,16 +28,37 @@
                 </div>
             </div>
         </div>
+        <div class="brand-section">
+        </div>
+
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <nav class="hud-nav-bar" id="hud-nav">
+            <ul>
+                <li><a href="#about" class="hud-glow-effect hud-link" data-text="About">About me</a></li>
+                <li><a href="#skills" class="hud-glow-effect hud-link" data-text="Skills">Skills</a></li>
+                <li><a href="#projects" class="hud-glow-effect hud-link" data-text="Projects">Projects</a></li>
+                <li><a href="#contac" class="hud-glow-effect hud-link" data-text="Contac">Contac</a></li>
+            </ul>
+        </nav>
+        <div class="nav-glow-line"></div>
+
+
         <nav class="hud-nav-bar" id="sticky-nav">
             <ul>
-                <li><a href="#about" class="hud-link" data-text="About">About me</a></li>
-                <li><a href="#skills" class="hud-link" data-text="Skills">Skills</a></li>
-                <li><a href="#projects" class="hud-link" data-text="Projects">Projects</a></li>
-                <li><a href="#contac" class="hud-link" data-text="Contac">Contac</a></li>
+                <li><a href="#about" class="hud-glow-effect hud-link" data-text="About">About me</a></li>
+                <li><a href="#skills" class="hud-glow-effect hud-link" data-text="Skills">Skills</a></li>
+                <li><a href="#projects" class="hud-glow-effect hud-link" data-text="Projects">Projects</a></li>
+                <li><a href="#contac" class="hud-glow-effect hud-link" data-text="Contac">Contac</a></li>
             </ul>
         </nav>
         <div class="nav-glow-line"></div>
     </header>
+
     <main>
         <!-- SECCION ACERCA DE MI -->
         <section id="about" class="hud-section">
@@ -48,10 +69,10 @@
             </header>
 
             <div class="about-container">
-                <figure class="profile-frame">
+                <figure class="profile-frame hud-glow-effect">
                     <div class="scanner-line"></div>
                     <img src="src/img/Wilder_Perfil.png" alt="Photografy of Wilder Chura">
-                    <figcaption>BIO_SCAN: ACTIVE</figcaption>
+                    <figcaption class="text-terminal">BIO_SCAN: ACTIVE</figcaption>
                 </figure>
 
                 <aside class="info-block">
@@ -64,8 +85,8 @@
                     <nav class="social-links">
                         <span class="label" aria-label="Social Media Links">CONNECT</span>
                         <ul>
-                            <li><a href="#" title="LinkedIn Profile"><img src="src/img/logos/social media/linkedin_Logo.png"
-                                        alt="LinkedIn"></a></li>
+                            <li><a href="#" title="LinkedIn Profile"><img
+                                        src="src/img/logos/social media/linkedin_Logo.png" alt="LinkedIn"></a></li>
                             <li><a href="#" title="WhatsApp Contact"><img src="src/img/logos/social media/whatsapp.png"
                                         alt="WhatsApp"></a></li>
                             <li><a href="#" title="GitHub Repository"><img src="src/img/logos/social media/whatsapp.png"
@@ -74,28 +95,26 @@
                     </nav>
                 </aside>
 
-                <article class="description-block">
+                <article class="description-block hud-glow-effect">
                     <header class="terminal-header">
                         <div class="terminal-controls"><span class="dot"></span><span class="dot"></span><span
                                 class="dot"></span></div>
                     </header>
                     <div class="description-content">
-                        <p>I trained in the Higher Technician of Video Game Development career, being passionate about
-                            creating
-                            immersive and unique experiences. I have experience with multidisciplinary development
-                            teams, which
-                            allows me to learn and improve every day to be able to provide solutions and adapt to a
-                            collaborative
-                            work pace, supporting the fulfillment of the desired objectives.</p>
-                        <p>My strengths are in the technical part with skills in Unity, in the programming of 2D, 3D
-                            environments
-                            and other technologies such as VR and AR. In which various functions are applied to games
-                            such as:
-                            mission system, multiplayer, simulations, reward system, authentications, among others.
-                            Successfully
-                            implementing third-party tools such as PlayFab, Photon, Firebase, Oculus SDK and more,
-                            seeking to
-                            provide optimal solutions through testing and application optimization.</p>
+                        <div class="text-wrapper" id="about-text">
+                            <p>I trained in the Higher Technician of Video Game Development career, being passionate
+                                about creating immersive and unique experiences. I have experience with
+                                multidisciplinary development teams, which allows me to learn and improve every day to
+                                be able to provide solutions and adapt to a collaborative work pace, supporting the
+                                fulfillment of the desired objectives.</p>
+                            <p>My strengths are in the technical part with skills in Unity, in the programming of 2D, 3D
+                                environments and other technologies such as VR and AR. In which various functions are
+                                applied to games such as: mission system, multiplayer, simulations, reward system,
+                                authentications, among others. Successfully implementing third-party tools such as
+                                PlayFab, Photon, Firebase, Oculus SDK and more, seeking to provide optimal solutions
+                                through testing and application optimization.</p>
+                        </div>
+                        <button class="terminal-btn toggle-text-btn" id="read-more-btn">[+ SEGUIR LEYENDO]</button>
                     </div>
                 </article>
             </div>
@@ -172,6 +191,19 @@
                                 <img src="src/img/logos/frameworks/unity-icon.webp" alt="Unity" class="skill-icon">
                             </div>
                             <span class="slot-label">UNITY_3D</span>
+                        </li>
+
+                        <li class="skill-slot slot-orange mobile-toggle-btn mobile-hidden" id="btn-show-more">
+                            <div class="slot-frame">
+                                <span class="text-terminal">+</span>
+                            </div>
+                            <span class="slot-label">VER_MÁS</span>
+                        </li>
+                        <li class="skill-slot slot-orange mobile-toggle-btn mobile-hidden" id="btn-show-less">
+                            <div class="slot-frame"">
+                                <span class="text-terminal">-</span>
+                            </div>
+                            <span class="slot-label" style="color: var(--accent-warn);">CERRAR</span>
                         </li>
                     </ul>
                 </div>
@@ -343,18 +375,7 @@
                 </div>
             </div>
         </section>
-        <!-- <section>
-            <h2>Contac me</h2>
-            <form action="">
-                <label for="name">Nombre: </label>
-                <input type="text" name="name" id="">
-                <label for="email">Email: </label>
-                <input type="email" name="email" id="">
-                <label for="message">Mensaje:</label>
-                <textarea name="message" id=""></textarea>
-                <button>Enviar</button>
-            </form>
-        </section> -->
+        <!-- SECCION CONTACTO -->
         <section id="contact" class="contact-section">
             <h2 class="section-title">CONTACT_ME</h2>
 
@@ -463,8 +484,11 @@
             </div>
         </div>
     </div>
+    <script src="src/JS/principal.js"></script>
     <script src="src/JS/skillAutoScroll.js"></script>
     <script src="src/JS/popUpInteractive.js"></script>
+    <script src="src/JS/hamburgerInteractive.js"></script>
+    <script src="src/JS/contact.js"></script>
 </body>
 
 </html>
