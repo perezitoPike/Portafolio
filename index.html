@@ -201,7 +201,7 @@
                         </li>
                         <li class="skill-slot slot-orange mobile-toggle-btn mobile-hidden" id="btn-show-less">
                             <div class="slot-frame"">
-                                <span class="text-terminal">-</span>
+                                <span class=" text-terminal">-</span>
                             </div>
                             <span class="slot-label" style="color: var(--accent-warn);">CERRAR</span>
                         </li>
@@ -339,6 +339,7 @@
             </div>
         </section>
 
+
         <!-- SECCION DE PROYECTOS -->
         <section id="projects" class="projects-section">
             <h2 class="section-title">PROJECTS</h2>
@@ -448,11 +449,6 @@
     <div id="cert-modal" class="hud-modal">
         <div class="modal-overlay"></div>
         <div class="modal-content">
-            <div id="cert-zoom-view" class="cert-zoom-container">
-                <span class="close-zoom">[X] VOLVER AL PANEL</span>
-                <img id="zoomed-image" src="" alt="Certificado Expandido">
-                <div class="zoom-info">ARCHIVO_CARGADO: <span id="cert-name-display"></span></div>
-            </div>
             <button id="close-modal" class="close-btn" aria-label="Cerrar modal">[X] CERRAR</button>
 
             <header class="modal-header">
@@ -484,11 +480,22 @@
             </div>
         </div>
     </div>
+
+    <!-- Burbuja -->
+    <div id="hud-tooltip" class="hud-tooltip">
+        <div class="tooltip-content">
+            <span class="tooltip-decor">// INFO_SCAN:</span>
+            <p id="tooltip-text">Cargando datos...</p>
+        </div>
+        <div class="tooltip-arrow"></div>
+    </div>
     <script src="src/JS/principal.js"></script>
     <script src="src/JS/skillAutoScroll.js"></script>
     <script src="src/JS/popUpInteractive.js"></script>
     <script src="src/JS/hamburgerInteractive.js"></script>
     <script src="src/JS/contact.js"></script>
+    <script src="src/JS/projectsList.js"></script>
+    <script src="src/JS/toolTip.js"></script>
 </body>
 
 </html>

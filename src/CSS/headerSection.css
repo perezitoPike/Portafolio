@@ -148,7 +148,7 @@
     }
 
     .hud-nav-bar {
-        position: fixed;
+        /* position: fixed;
         top: var(--header-height);
         right: -100%;
         width: 30%;
@@ -157,11 +157,31 @@
         background-color: var(--bg-panel-semitrnasparent);
         backdrop-filter: blur(15px);
         transition: 0.4s ease;
+        border-left: 2px solid var(--border-panel); */
+        position: fixed;
+        top: var(--header-height);
+        right: -100%; /* Sigue fuera de la pantalla */
+        
+        /* AÑADE ESTO */
+        visibility: hidden; /* Lo hace invisible para el navegador y lectores de pantalla */
+        opacity: 0;        /* Refuerza la ocultación */
+        pointer-events: none; /* Evita que se pueda clickear mientras está oculto */
+        
+        width: 30%;
+        min-width: 300px;
+        height: calc(100vh - var(--header-height));
+        background-color: var(--bg-panel-semitrnasparent);
+        backdrop-filter: blur(15px);
+        transition: all 0.4s ease; /* Cambiado a 'all' para incluir visibility/opacity */
         border-left: 2px solid var(--border-panel);
+        z-index: 1050;
     }
 
     .hud-nav-bar.active {
         right: 0;
+        visibility: visible; /* Se vuelve visible */
+        opacity: 1;          /* Aparece suavemente */
+        pointer-events: all; /* Habilita los clicks nuevamente */
     }
 
     .hud-nav-bar ul {

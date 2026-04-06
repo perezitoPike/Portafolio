@@ -25,6 +25,7 @@ body {
     background-color: var(--bg-void);
     color: var(--text-main);
     font-family: 'Courier New', Courier, monospace;
+    overflow-x: hidden;
 }
 
 .header-line {
@@ -76,4 +77,50 @@ body {
     width: 10px; height: 10px;
     border-top: 2px solid var(--neon-cyan);
     border-left: 2px solid var(--neon-cyan);
+}
+
+/* TOOL TIPS */
+.hud-tooltip {
+    position: fixed;
+    z-index: 3000; /* Por encima de los modales */
+    pointer-events: none; /* Para que no estorbe al mover el mouse */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, transform 0.2s;
+    transform: translateY(10px);
+    max-width: 250px;
+}
+
+.hud-tooltip.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.tooltip-content {
+    background: rgba(5, 24, 36, 0.95);
+    border: 1px solid var(--neon-cyan);
+    padding: 12px;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    color: var(--text-main);
+    font-family: monospace;
+    font-size: 0.85rem;
+    position: relative;
+}
+
+.tooltip-decor {
+    display: block;
+    color: var(--neon-cyan);
+    font-weight: bold;
+    font-size: 0.7rem;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.tooltip-arrow {
+    width: 0; height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid var(--neon-cyan);
+    margin: 0 auto;
 }
