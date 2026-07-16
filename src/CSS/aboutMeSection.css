@@ -100,7 +100,8 @@
 }
 
 .social-links {
-    margin-top: 25px; /* Un poco más de aire respecto al rol */
+    margin-top: 25px;
+    /* Un poco más de aire respecto al rol */
 }
 
 .social-links ul {
@@ -108,13 +109,22 @@
     padding: 0;
     margin: 15px 0 0 0;
     display: flex;
+    flex-direction: column;
     gap: 30px;
     justify-content: flex-start;
 }
 
+.social-links ul li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    width: fit-content;
+}
+
 .social-links ul li a img {
-    width: 48px;
-    height: 48px;
+    width: 38px;
+    height: 38px;
     object-fit: contain;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     filter: drop-shadow(0 0 5px var(--color-shadow));
@@ -122,11 +132,23 @@
     display: block;
 }
 
+.social-text {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
 .social-links ul li a img:hover {
     transform: scale(1.25) translateY(-8px);
-    /* Salta un poco más al pasar el mouse */
     filter: drop-shadow(0 0 15px var(--neon-cyan)) brightness(1.3);
     opacity: 1;
+}
+
+.social-links ul li a:hover .social-text {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 8px var(--neon-cyan);
 }
 
 .social-links .label {
@@ -237,9 +259,7 @@
 @media (max-width: 1100px) {
     .about-container {
         flex-direction: column;
-        /* Cambio a columna */
         align-items: center;
-        /* Centra todo el contenido */
     }
 
     .profile-frame {
@@ -256,13 +276,25 @@
         margin-bottom: 20px;
     }
 
-.social-links ul {
+    .social-links ul {
+        align-items: center;
         justify-content: center;
-        gap: 40px; /* Más espacio para evitar toques accidentales en pantallas táctiles */
+        gap: 40px;
+        flex-direction: row;
     }
-    
+
+    .social-links ul li a img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .social-text {
+        font-size: 1rem;
+    }
+
     .social-links img {
-        width: 52px; /* Un pelín más grandes en móvil para facilitar el clic */
+        width: 52px;
+        /* Un pelín más grandes en móvil para facilitar el clic */
         height: 52px;
     }
 
@@ -279,7 +311,6 @@
 @media (max-width: 600px) {
     .hud-section {
         padding: 40px 20px;
-        /* Menos espacio en pantallas muy pequeñas */
     }
 
     .name {

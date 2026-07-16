@@ -1,0 +1,32 @@
+<section id="projects" class="projects-section">
+    <h2 class="section-title">PROJECTS</h2>
+
+    <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">TODOS</button>
+        <button class="filter-btn" data-filter="unity">UNITY</button>
+        <button class="filter-btn" data-filter="csharp">C#</button>
+        <button class="filter-btn" data-filter="web">WEB</button>
+    </div>
+
+    <div class="projects-container">
+        <div class="projects-list-wrapper">
+            <ul id="project-menu" class="project-menu"></ul>
+        </div>
+
+        <div class="project-viewer">
+            <button class="nav-btn-float prev">◀</button>
+            <button class="nav-btn-float next">▶</button>
+
+            <div id="project-display" class="viewer-content">
+                <div class="viewer-bg"><img id="view-img" src="" alt=""></div>
+                <div class="viewer-info-overlay">
+                    <div class="info-text">
+                        <h3 id="view-title"></h3>
+                        <p id="view-desc"></p>
+                        <div id="view-tools" class="tool-icons"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

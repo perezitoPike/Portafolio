@@ -25,7 +25,7 @@
 //     };
 // });
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('componentsLoaded', () => {
     const contactForm = document.getElementById('contact-form');
     const btnEmail = document.getElementById('btn-email');
     

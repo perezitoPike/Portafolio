@@ -104,7 +104,7 @@ document.querySelector('.nav-btn-float.prev').onclick = () => {
 };
 
 // Iniciar sistema
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('componentsLoaded', () => {
     renderProjectList();
     // Aquí puedes llamar a tu startAutoPlay() si deseas que inicie solo
 });

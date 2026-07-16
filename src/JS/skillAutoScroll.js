@@ -1,30 +1,91 @@
-const objectsSkill = [
-    {
-        title:"Unity",
-        alt:"Unity",
-        src_image:"src/img/logos/frameworks/unity-icon.webp"
-    }
-]
+// Archivo: src/JS/skillAutoScroll.js
+import { objectsSkill } from './data/skillsData.js';
 
-/* Skill scrolling */
-document.addEventListener('DOMContentLoaded', () => {
+/* 1. Inyección de Skills duplicadas para efecto infinito sin saltos */
+document.addEventListener('componentsLoaded', () => {
+    let menuSkills = document.getElementById("track");
+    if (!menuSkills) return;
+
+    // Guardamos los botones de móvil que ya existen en el HTML para mantener su posición
+    const btnShowMore = document.getElementById('btn-show-more');
+    const btnShowLess = document.getElementById('btn-show-less');
+
+    // Función auxiliar para renderizar un slot
+    const createSkillElement = (skill) => {
+        const li = document.createElement('li');
+        li.className = `skill-slot`;
+        li.innerHTML = `
+            <div class="slot-frame"><img src="${skill.src_image}" alt="${skill.alt}" class="skill-icon"></div>
+            <span class="slot-label">${skill.title}</span>
+        `;
+        return li;
+    };
+
+    // PRIMERA TANDA: Inyectamos todos los skills originales antes de los botones
+    objectsSkill.forEach(skill => {
+        const li = createSkillElement(skill);
+        menuSkills.insertBefore(li, btnShowMore);
+    });
+
+    // SEGUNDA TANDA (Duplicados): Inyectamos una copia idéntica de los skills
+    // Esto es vital en PC para que al llegar a -50% el primer elemento repetido tape el hueco de forma infinita
+    objectsSkill.forEach(skill => {
+        const li = createSkillElement(skill);
+        // Le añadimos una clase para poder ocultar estos clones fácilmente en modo móvil si fuese necesario
+        li.classList.add('pc-clone'); 
+        menuSkills.insertBefore(li, btnShowMore);
+    });
+
+    document.dispatchEvent(new Event("SkillsLoaded"));
+});
+
+/* 2. Control de Animación Infinitamente Fluida */
+document.addEventListener('SkillsLoaded', () => {
     const track = document.getElementById('track');
-    const slots = track.querySelectorAll('.skill-slot');
+    const slots = track.querySelectorAll('.skill-slot:not(.mobile-toggle-btn)'); // Excluimos botones + y -
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
 
-    const scrollAnimation = track.animate(
+    if (!track || !btnPrev || !btnNext) return;
+
+    // Configuración de la animación nativa de traslado infinito
+    let scrollAnimation = track.animate(
         [
-            { transform: 'translateX(0)' },
-            { transform: 'translateX(-50%)' }
+            { transform: 'translateX(-50%)' },
+            { transform: 'translateX(0)' }
         ], {
-        duration: 20000,
-        interations: Infinity,
-        easing: 'linear'
-    }
+            duration: 25000, 
+            iterations: Infinity, 
+            easing: 'linear'
+        }
     );
 
-    // FUNCIÓN CLAVE: Detectar si es móvil para pausar
+    const normalSpeed = 1;
+    const fastSpeed = 7;
+
+    const duration = scrollAnimation.effect.getComputedTiming().duration;
+    
+    // Ajuste del bucle para el nuevo sentido de la marcha
+    function updateLoop() {
+        if (window.innerWidth > 850) {
+            const currentTime = scrollAnimation.currentTime;
+
+            // Al ir de izquierda a derecha (normalSpeed > 0), al tocar el final (0), 
+            // salta instantáneamente al inicio del tiempo para continuar el ciclo
+            if (scrollAnimation.playbackRate > 0 && currentTime >= duration) {
+                scrollAnimation.currentTime = 0;
+            } 
+            // Si el usuario usa el botón de rebobinar (playbackRate < 0) y llega a 0,
+            // lo mandamos al final de la línea temporal de manera limpia
+            else if (scrollAnimation.playbackRate < 0 && currentTime <= 0) {
+                scrollAnimation.currentTime = duration;
+            }
+        }
+        requestAnimationFrame(updateLoop);
+    }
+    requestAnimationFrame(updateLoop);
+
+    // FUNCIÓN CLAVE: Pausa en móvil, corre en Web
     const checkMobile = () => {
         if (window.innerWidth <= 850) {
             scrollAnimation.pause();
@@ -33,99 +94,65 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Ejecutar al cargar y al cambiar tamaño de ventana
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
-    setInterval(() => {
-        if (scrollAnimation.playbackRate < 0 && scrollAnimation.currentTime <= 0) {
-            scrollAnimation.currentTime = scrollAnimation.effect.getComputedTiming().duration;
-        }
-    }, 10);
-
-    const normalSpeed = 1;
-    const fastSeed = 8;
-
     const speedUp = () => {
-        // track.style.animationDuration = fastSeed;
-        // track.style.animationDirection = 'normal';
-        scrollAnimation.playbackRate = fastSeed;
+        scrollAnimation.playbackRate = fastSpeed;
         scrollAnimation.play();
     };
 
     const reverseSpeed = () => {
-        // track.style.animationDuration = fastSeed;
-        // track.style.animationDirection = 'reverse';
-        scrollAnimation.playbackRate = -fastSeed;
+        scrollAnimation.playbackRate = -fastSpeed;
         scrollAnimation.play();
     };
 
     const resetSpeed = () => {
-        // track.style.animationDuration = normalSpeed;
-        // track.style.animationDirection = 'normal';
         scrollAnimation.playbackRate = normalSpeed;
-    }
+        if (window.innerWidth > 850) {
+            scrollAnimation.play();
+        }
+    };
 
-
-
+    // Asignación de Eventos Limpios a los Botones de navegación HUD
+    btnPrev.addEventListener('mousedown', speedUp);
     btnPrev.addEventListener('mouseup', resetSpeed);
     btnPrev.addEventListener('mouseleave', resetSpeed);
+    btnPrev.addEventListener('touchstart', (e) => { e.preventDefault(); speedUp(); });
     btnPrev.addEventListener('touchend', resetSpeed);
 
-    btnPrev.addEventListener('mousedown', speedUp);
-    btnPrev.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        speedUp();
-    });
-
-    btnNext.addEventListener('mouseup', resetReverseWorkaround);
-    btnNext.addEventListener('mouseleave', resetReverseWorkaround);
-    btnNext.addEventListener('touchend', resetReverseWorkaround);
-
     btnNext.addEventListener('mousedown', reverseSpeed);
-    btnNext.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        reverseSpeed();
-    });
+    btnNext.addEventListener('mouseup', resetSpeed);
+    btnNext.addEventListener('mouseleave', resetSpeed);
+    btnNext.addEventListener('touchstart', (e) => { e.preventDefault(); reverseSpeed(); });
+    btnNext.addEventListener('touchend', resetSpeed);
 
-    function resetReverseWorkaround() {
-        resetSpeed();
-        if (scrollAnimation.currentTime <= 0) {
-            scrollAnimation = scrollAnimation.effect.getComputedTiming().duration;
-        }
-    }
-
-    // track.addEventListener('mouseenter', () => scrollAnimation.pause());
-    // track.addEventListener('mouseleave', () => scrollAnimation.play());
-    for (let index = 0; index < slots.length; index++) {
-        const element = slots[index];
-        element.addEventListener('mouseenter', () => scrollAnimation.pause());
+    // Pausa del escáner / carrusel al hacer Hover sobre cualquier Skill individual
+    slots.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            if (window.innerWidth > 850) scrollAnimation.pause();
+        });
         element.addEventListener('mouseleave', () => {
-            if (scrollAnimation.playbackRate === normalSpeed) {
+            if (window.innerWidth > 850 && scrollAnimation.playbackRate === normalSpeed) {
                 scrollAnimation.play();
             }
         });
-    }
+    });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Referencias al DOM
+/* 3. Lógica del Inventario Desplegable en Móviles */
+document.addEventListener('SkillsLoaded', () => {
     const track = document.getElementById('track');
     const btnShowMore = document.getElementById('btn-show-more');
     const btnShowLess = document.getElementById('btn-show-less');
 
-    // Lógica del Inventario Desplegable (Solo afecta en móvil por el CSS)
     if (btnShowMore && btnShowLess) {
-        // Al hacer clic en "+"
         btnShowMore.addEventListener('click', () => {
             track.classList.add('is-expanded');
         });
 
-        // Al hacer clic en "-"
         btnShowLess.addEventListener('click', () => {
             track.classList.remove('is-expanded');
-            
-            // Opcional: Hace que la pantalla suba de vuelta al inicio de la sección Skills
             document.getElementById('skills').scrollIntoView({ behavior: 'smooth' });
         });
     }

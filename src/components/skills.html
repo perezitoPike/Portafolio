@@ -1,0 +1,30 @@
+<section id="skills" class="hud-section">
+    <header class="section-header">
+        <span class="decoration" aria-hidden="true">//</span>
+        <h2>SKILLS</h2>
+        <div class="header-line"></div>
+    </header>
+
+    <div class="carousel-wrapper">
+        <button class="hud-arrow arrow-left" id="btn-prev" aria-label="rewind quickly">&#10094;</button>
+        <div class="inventory-carousel">
+            <ul class="carousel-track" id="track">
+                <!-- Se repite para tus slots de habilidades -->
+                <!-- <li class="skill-slot">
+                    <div class="slot-frame"><img src="src/img/logos/frameworks/unity-icon.webp" alt="Unity" class="skill-icon"></div>
+                    <span class="slot-label">UNITY_3D</span>
+                </li> -->
+                <!-- El resto de tus 10 slots se mantienen idénticos aquí dentro... -->
+                <li class="skill-slot slot-orange mobile-toggle-btn mobile-hidden" id="btn-show-more">
+                    <div class="slot-frame"><span class="text-terminal">+</span></div>
+                    <span class="slot-label">VER_MÁS</span>
+                </li>
+                <li class="skill-slot slot-orange mobile-toggle-btn mobile-hidden" id="btn-show-less">
+                    <div class="slot-frame"><span class="text-terminal">-</span></div>
+                    <span class="slot-label" style="color: var(--accent-warn);">CERRAR</span>
+                </li>
+            </ul>
+        </div>
+        <button class="hud-arrow arrow-right" id="btn-next" aria-label="fast forward">&#10095;</button>
+    </div>
+</section>

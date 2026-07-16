@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('componentsLoaded', () => {
     const menuToggle = document.getElementById('menu-toggle');
     const hudNav = document.getElementById('hud-nav');
     const navLinks = document.querySelectorAll('.hud-link');

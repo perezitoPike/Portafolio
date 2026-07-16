@@ -148,16 +148,6 @@
     }
 
     .hud-nav-bar {
-        /* position: fixed;
-        top: var(--header-height);
-        right: -100%;
-        width: 30%;
-        min-width: 300px;
-        height: calc(100vh - var(--header-height));
-        background-color: var(--bg-panel-semitrnasparent);
-        backdrop-filter: blur(15px);
-        transition: 0.4s ease;
-        border-left: 2px solid var(--border-panel); */
         position: fixed;
         top: var(--header-height);
         right: -100%; /* Sigue fuera de la pantalla */

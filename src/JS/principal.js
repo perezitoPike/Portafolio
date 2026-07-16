@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const aboutText = document.getElementById('about-text'); // Tu ID en el HTML
+document.addEventListener('componentsLoaded', () => {
+    const aboutText = document.getElementById('about-text');
     const readMoreBtn = document.getElementById('read-more-btn');
 
     if (readMoreBtn && aboutText) {
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 readMoreBtn.textContent = '[+ SEGUIR LEYENDO]';
                 // Opcional: vuelve arriba de la sección al cerrar
-                //document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+                // document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
             }
         });
     }

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('componentsLoaded', () => {
     const modal = document.getElementById('cert-modal');
     const btnOpen = document.getElementById('btn-certificados');
     const btnClose = document.getElementById('close-modal');

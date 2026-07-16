@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('componentsLoaded', () => {
     const tooltip = document.getElementById('hud-tooltip');
     const tooltipText = document.getElementById('tooltip-text');
     let activeElement = null;

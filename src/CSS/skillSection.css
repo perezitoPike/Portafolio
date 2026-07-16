@@ -237,4 +237,8 @@
     .carousel-track.is-expanded #btn-show-more {
         display: none;
     }
+
+    .carousel-track .skill-slot.pc-clone {
+        display: none !important;
+    }
 }
