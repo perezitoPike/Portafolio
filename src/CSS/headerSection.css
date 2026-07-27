@@ -150,13 +150,13 @@
     .hud-nav-bar {
         position: fixed;
         top: var(--header-height);
-        right: -100%; /* Sigue fuera de la pantalla */
-        
-        /* AÑADE ESTO */
-        visibility: hidden; /* Lo hace invisible para el navegador y lectores de pantalla */
-        opacity: 0;        /* Refuerza la ocultación */
-        pointer-events: none; /* Evita que se pueda clickear mientras está oculto */
-        
+        right: 0%; /* Sigue fuera de la pantalla */
+
+        transform: translateX(100%);
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+
         width: 30%;
         min-width: 300px;
         height: calc(100vh - var(--header-height));
@@ -168,7 +168,7 @@
     }
 
     .hud-nav-bar.active {
-        right: 0;
+        transform: translateX(0);
         visibility: visible; /* Se vuelve visible */
         opacity: 1;          /* Aparece suavemente */
         pointer-events: all; /* Habilita los clicks nuevamente */

@@ -25,6 +25,10 @@ body {
     background-color: var(--bg-void);
     color: var(--text-main);
     font-family: 'Courier New', Courier, monospace;
+}
+
+html, body {
+    max-width: 100%;
     overflow-x: hidden;
 }
 
